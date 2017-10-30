@@ -30,6 +30,7 @@ print 'Reading config'
 with open(config_file) as fp:
     config = json.load(fp)
 
+# Get config parameters
 if 'Match_Column' in config['config']:
     MatchColumn = config['config']['Match_Column'].strip()
 else:
@@ -45,17 +46,18 @@ if 'Group_Tags_By' in config['config']:
 else:
     GroupTagsBy = ""
 
-# published gear -----> fileid = config['inputs']['csv']['hierarchy']['id']
-# local testing  -----> fileid = '59c615f74cffa9001ab7385d'
 
-fileid = '59c615f74cffa9001ab7385d'
-#fileid = config['inputs']['file']['hierarchy']['id']
 
 # Load Flywheel Python SDK
 print 'Loading Python SDK'
 from flywheel import Flywheel
-fw = Flywheel('dev.flywheel.io:mfi2q5rNrzVAoOzoAt')
 
+# Get temporary API key
+api_key = str(config_contents['inputs']['api_key']['key'])
+fw = Flywheel(api_key)
+
+# Get fileid
+fileid = config['inputs']['file']['hierarchy']['id']
 # get project information from file
 acquisition = fw.get_acquisition(fileid)
 session = fw.get_session(acquisition['session'])

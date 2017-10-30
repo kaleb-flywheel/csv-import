@@ -8,7 +8,10 @@
 		"file": {
 			"base": "file",
 			"description": "Subject Metadata CSV file."
-		}
+		},
+		"api_key": {
+      			"base": "api-key"
+    		}
 	},
 	"config": {
 		"Group_Tags_By": {
