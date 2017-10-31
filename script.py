@@ -53,7 +53,7 @@ print 'Loading Python SDK'
 from flywheel import Flywheel
 
 # Get temporary API key
-api_key = str(config_contents['inputs']['api_key']['key'])
+api_key = str(config['inputs']['api_key']['key'])
 fw = Flywheel(api_key)
 
 # Get fileid
@@ -67,7 +67,7 @@ projectname = project['label']
 
 # read CSV into list
 print 'Reading in CSV'
-with open(input_filepath, 'rb') as f:
+with open(input_filepath, 'rbU') as f:
     reader = csv.reader(f)
     rows = list(reader)
 
