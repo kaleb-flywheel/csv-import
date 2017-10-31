@@ -28,7 +28,7 @@
 	"author": "Imad Nijim",
 	"maintainer": "Flywheel <support@flywheel.io>",
 	"license": "Other",
-	"source": "",
+	"source": "https://github.com/flywheel-apps/csv-import",
 	"url": "www.flywheel.io",
 	"custom": {
     		"docker-image": "flywheel/csv-import:v0.1.0"
