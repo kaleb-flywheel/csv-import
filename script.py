@@ -13,6 +13,7 @@ import time
 import csv
 import json
 import re
+import pandas as pd
 
 # Gear basics
 print('Setup')
@@ -67,12 +68,11 @@ projectname = project['label']
 
 # read CSV into list
 print('Reading in CSV')
-with open(input_filepath, 'rbU') as f:
-    reader = csv.reader(f)
-    rows = list(reader)
+csv_data = pd.read_csv(input_filepath)
+csv_columns = csv.columns
 
 # Check if matching column exists
-if MatchColumn not in rows[0]:
+if MatchColumn not in csv_columns:
     print("Match Column not found in CSV")
     sys.exit(1)
 

@@ -1,11 +1,13 @@
 #flywheel/csv-import
 
-# Start with python 2.7
-FROM python:2.7
+# Start with python 3.7
+FROM python:3.7
 MAINTAINER Flywheel <support@flywheel.io>
 
 # Install Python SDK
 RUN pip install https://github.com/flywheel-io/sdk/releases/download/0.2.0/flywheel-0.2.0-py2-none-linux_x86_64.whl
+# Install pandas
+RUN pip install pandas
 
 # Make directory for flywheel spec (v0)
 ENV FLYWHEEL /flywheel/v0
