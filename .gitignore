@@ -1,0 +1,9 @@
+
+*.iml
+*.xml
+.ipynb_checkpoints/Dockerfile-checkpoint
+.ipynb_checkpoints/manifest-checkpoint.json
+.ipynb_checkpoints/script-checkpoint.py
+.ipynb_checkpoints/Untitled-checkpoint.ipynb
+Untitled.ipynb
+sample.csv

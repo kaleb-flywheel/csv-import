@@ -15,7 +15,7 @@ import json
 import re
 
 # Gear basics
-print 'Setup'
+print('Setup')
 flywheel_base = '/flywheel/v0'
 input_folder = os.path.join(flywheel_base, 'input/file')
 output_folder = os.path.join(flywheel_base, 'output')
@@ -26,7 +26,7 @@ input_filename = os.listdir(input_folder)[0]
 input_filepath = os.path.join(input_folder, input_filename)
 
 # Grab config from config.json
-print 'Reading config'
+print('Reading config')
 with open(config_file) as fp:
     config = json.load(fp)
 
@@ -40,8 +40,8 @@ if 'Group_Tags_By' in config['config']:
     GroupTagsBy = config['config']['Group_Tags_By'].strip()
     if GroupTagsBy != "":
         if not re.match('^[a-zA-Z0-9][a-zA-Z0-9_-]+$', GroupTagsBy):
-            print 'Group By Tags is invalid.'
-            print 'Valid values are: blank, alphanumeric including dashes and underscores'
+            print('Group By Tags is invalid.')
+            print('Valid values are: blank, alphanumeric including dashes and underscores')
             sys.exit(1)
 else:
     GroupTagsBy = ""
@@ -49,7 +49,7 @@ else:
 
 
 # Load Flywheel Python SDK
-print 'Loading Python SDK'
+print('Loading Python SDK')
 from flywheel import Flywheel
 
 # Get temporary API key
@@ -66,7 +66,7 @@ projectid = project['_id']
 projectname = project['label']
 
 # read CSV into list
-print 'Reading in CSV'
+print('Reading in CSV')
 with open(input_filepath, 'rbU') as f:
     reader = csv.reader(f)
     rows = list(reader)
@@ -86,7 +86,7 @@ for row in rows[1:]:
     csv_subjects.append(newdict)
 
 # Build the string and update session
-print 'Updating sessions'
+print('Updating sessions')
 sessions = fw.get_project_sessions(projectid)
 
 for row in csv_subjects:
@@ -103,7 +103,7 @@ for row in csv_subjects:
             fw.modify_session(session['_id'], myobject)
     if not subjectfound:
         #print "Subject Code %s in %s does not match a subject in the %s project." % (row[MatchColumn], input_filename, projectname)
-        print 'Subject Code ' + row[MatchColumn] + ' in ' + input_filename + ' does not match a subject in the ' + projectname + ' project' + '.'
+        print('Subject Code ' + row[MatchColumn] + ' in ' + input_filename + ' does not match a subject in the ' + projectname + ' project' + '.')
 
 # Add record keeping note to project notes
 if not GroupTagsBy:
